@@ -12,6 +12,7 @@ services:
       - ./.env
     networks:
       - postgres_go_net
+    restart: always
 volumes:
   postgres_data:
 
