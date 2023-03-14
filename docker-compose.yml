@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   db:
+    container_name: "postgresql"
     image: postgres:13.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
@@ -9,6 +10,12 @@ services:
       - 5432:5432
     env_file:
       - ./.env
-
+    networks:
+      - postgres_go_net
 volumes:
   postgres_data:
+
+
+networks:
+  postgres_go_net:
+    driver: bridge
