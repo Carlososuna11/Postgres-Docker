@@ -3,7 +3,8 @@ version: '3.8'
 services:
   db:
     container_name: "postgresql"
-    image: postgres:13.0-alpine
+    build:
+      context: .
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
@@ -13,9 +14,9 @@ services:
     networks:
       - postgres_go_net
     restart: always
+
 volumes:
   postgres_data:
-
 
 networks:
   postgres_go_net:
